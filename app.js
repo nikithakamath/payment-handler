@@ -19,6 +19,10 @@ app.use(cors(corsOption));
 app.use(bodyParser.json());
 app.use(require('./routes'));
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+if(process.env.NODE_ENV === 'development') {
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
+
+module.exports = app;
